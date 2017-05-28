@@ -14,7 +14,7 @@ namespace DeployerSite.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            return new string[] { "Service name", "Deployer" };
+            return new [] { "Service name", "Deployer" };
         }
 
         // POST api/deployer
@@ -27,14 +27,7 @@ namespace DeployerSite.Controllers
             try
             {
 
-                Request.HttpContext.Co
-                var filedata = await Request.ReadFormAsync();
-                    
-                //    .ReadAsMultipartAsync(new MultipartMemoryStreamProvider());
-                foreach (var file in filedata.)
-                {
-                    var fileStream = await file.ReadAsStreamAsync();
-                }
+
 
             }
             catch (Exception ex)
