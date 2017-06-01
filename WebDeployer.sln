@@ -11,6 +11,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Publisher", "Publisher\Publisher.csproj", "{C4375BA3-6742-4E77-8493-44AFCEE7681C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{861A5779-FA66-43EE-9BC8-DB56E368B7D7} = {861A5779-FA66-43EE-9BC8-DB56E368B7D7}
+	EndProjectSection
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "DeployerSite", "src\DeployerSite\DeployerSite.xproj", "{861A5779-FA66-43EE-9BC8-DB56E368B7D7}"
 EndProject

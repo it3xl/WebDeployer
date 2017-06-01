@@ -43,6 +43,73 @@
           }
         }
       },
+      "Microsoft.AspNet.Cors/5.2.3": {
+        "type": "package",
+        "compile": {
+          "lib/net45/System.Web.Cors.dll": {}
+        },
+        "runtime": {
+          "lib/net45/System.Web.Cors.dll": {}
+        }
+      },
+      "Microsoft.AspNet.WebApi/5.2.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.WebApi.WebHost": "[5.2.3, 5.3.0)"
+        }
+      },
+      "Microsoft.AspNet.WebApi.Client/5.2.3": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "6.0.4"
+        },
+        "frameworkAssemblies": [
+          "System.Net.Http"
+        ],
+        "compile": {
+          "lib/net45/System.Net.Http.Formatting.dll": {}
+        },
+        "runtime": {
+          "lib/net45/System.Net.Http.Formatting.dll": {}
+        }
+      },
+      "Microsoft.AspNet.WebApi.Core/5.2.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.WebApi.Client": "5.2.3"
+        },
+        "compile": {
+          "lib/net45/System.Web.Http.dll": {}
+        },
+        "runtime": {
+          "lib/net45/System.Web.Http.dll": {}
+        }
+      },
+      "Microsoft.AspNet.WebApi.Cors/5.2.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.Cors": "5.2.3",
+          "Microsoft.AspNet.WebApi.Core": "[5.2.3, 5.3.0)"
+        },
+        "compile": {
+          "lib/net45/System.Web.Http.Cors.dll": {}
+        },
+        "runtime": {
+          "lib/net45/System.Web.Http.Cors.dll": {}
+        }
+      },
+      "Microsoft.AspNet.WebApi.WebHost/5.2.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.WebApi.Core": "[5.2.3, 5.3.0)"
+        },
+        "compile": {
+          "lib/net45/System.Web.Http.WebHost.dll": {}
+        },
+        "runtime": {
+          "lib/net45/System.Web.Http.WebHost.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Antiforgery/1.1.2": {
         "type": "package",
         "dependencies": {
@@ -1564,10 +1631,9 @@
           "lib/net45/_._": {}
         }
       },
-      "System.Net.Http/4.3.0": {
+      "System.Net.Http/4.3.2": {
         "type": "package",
         "dependencies": {
-          "System.Diagnostics.DiagnosticSource": "4.3.0",
           "System.Security.Cryptography.X509Certificates": "4.3.0"
         },
         "frameworkAssemblies": [
@@ -2076,6 +2142,72 @@
         "runtimes/win7-arm/native/libuv.dll",
         "runtimes/win7-x64/native/libuv.dll",
         "runtimes/win7-x86/native/libuv.dll"
+      ]
+    },
+    "Microsoft.AspNet.Cors/5.2.3": {
+      "sha512": "6pGL9FwV+FAFK5At8B4TefhScN3Pwe589MCHopeLQVfuKuGdNEuNDEXL+SHCgdN1ZSHxPAhzSZHCL0xt90CKfQ==",
+      "type": "package",
+      "path": "Microsoft.AspNet.Cors/5.2.3",
+      "files": [
+        "Microsoft.AspNet.Cors.5.2.3.nupkg.sha512",
+        "Microsoft.AspNet.Cors.nuspec",
+        "lib/net45/System.Web.Cors.dll"
+      ]
+    },
+    "Microsoft.AspNet.WebApi/5.2.3": {
+      "sha512": "mGBfSy61+2dIdPwgguW8EaCVsbYTwwVHeCc/pVq1PhlZS87ColgJ++Hve40TrX6Dtqde0fo9M1Tt19rXlHC5GA==",
+      "type": "package",
+      "path": "Microsoft.AspNet.WebApi/5.2.3",
+      "files": [
+        "Microsoft.AspNet.WebApi.5.2.3.nupkg.sha512",
+        "Microsoft.AspNet.WebApi.nuspec"
+      ]
+    },
+    "Microsoft.AspNet.WebApi.Client/5.2.3": {
+      "sha512": "3kiI8peSXbXHDDrRuo+QaX0iCEVRe0nvn2dBDRw656uPX32UalbBlSIDUDlJxu05eau4tnuhsikiUuugvvoUoQ==",
+      "type": "package",
+      "path": "Microsoft.AspNet.WebApi.Client/5.2.3",
+      "files": [
+        "Microsoft.AspNet.WebApi.Client.5.2.3.nupkg.sha512",
+        "Microsoft.AspNet.WebApi.Client.nuspec",
+        "lib/net45/System.Net.Http.Formatting.dll",
+        "lib/net45/System.Net.Http.Formatting.xml",
+        "lib/portable-wp8+netcore45+net45+wp81+wpa81/System.Net.Http.Formatting.dll",
+        "lib/portable-wp8+netcore45+net45+wp81+wpa81/System.Net.Http.Formatting.xml"
+      ]
+    },
+    "Microsoft.AspNet.WebApi.Core/5.2.3": {
+      "sha512": "o90QYlRV8VKR1S7+EcJw9w8WSyVFLl+IIzN8ILZ+n2t6rsc/KS8kBxRzA7wCFPRUHhebCfLqilBk39phvanx3g==",
+      "type": "package",
+      "path": "Microsoft.AspNet.WebApi.Core/5.2.3",
+      "files": [
+        "Content/web.config.transform",
+        "Microsoft.AspNet.WebApi.Core.5.2.3.nupkg.sha512",
+        "Microsoft.AspNet.WebApi.Core.nuspec",
+        "lib/net45/System.Web.Http.dll",
+        "lib/net45/System.Web.Http.xml"
+      ]
+    },
+    "Microsoft.AspNet.WebApi.Cors/5.2.3": {
+      "sha512": "M45cmd93Qr3FJeH9AIyzzfb9XasEoE0lQJacqDtvJFrJl2xuDBhiAXYWv+JkIBHmJcjP9VtcfqTZmJ7eogoDkA==",
+      "type": "package",
+      "path": "Microsoft.AspNet.WebApi.Cors/5.2.3",
+      "files": [
+        "Microsoft.AspNet.WebApi.Cors.5.2.3.nupkg.sha512",
+        "Microsoft.AspNet.WebApi.Cors.nuspec",
+        "lib/net45/System.Web.Http.Cors.dll",
+        "lib/net45/System.Web.Http.Cors.xml"
+      ]
+    },
+    "Microsoft.AspNet.WebApi.WebHost/5.2.3": {
+      "sha512": "bhm4/BKdS3t6nK2R3NjCpxulcwtMFiHqVBDLuN3W5So1PhZfE+RBs7eVazGOhsEKCk7PoSmiSnl9DG0cpyfHtA==",
+      "type": "package",
+      "path": "Microsoft.AspNet.WebApi.WebHost/5.2.3",
+      "files": [
+        "Microsoft.AspNet.WebApi.WebHost.5.2.3.nupkg.sha512",
+        "Microsoft.AspNet.WebApi.WebHost.nuspec",
+        "lib/net45/System.Web.Http.WebHost.dll",
+        "lib/net45/System.Web.Http.WebHost.xml"
       ]
     },
     "Microsoft.AspNetCore.Antiforgery/1.1.2": {
@@ -4488,12 +4620,12 @@
         "runtimes/aot/lib/netcore50/System.Linq.Expressions.dll"
       ]
     },
-    "System.Net.Http/4.3.0": {
-      "sha512": "sYg+FtILtRQuYWSIAuNOELwVuVsxVyJGWQyOnlAzhV4xvhyFnON1bAzYYC+jjRW8JREM45R0R5Dgi8MTC5sEwA==",
+    "System.Net.Http/4.3.2": {
+      "sha512": "y7hv0o0weI0j0mvEcBOdt1F3CAADiWlcw3e54m8TfYiRmBPDIsHElx8QUPDlY4x6yWXKPGN0Z2TuXCTPgkm5WQ==",
       "type": "package",
-      "path": "System.Net.Http/4.3.0",
+      "path": "System.Net.Http/4.3.2",
       "files": [
-        "System.Net.Http.4.3.0.nupkg.sha512",
+        "System.Net.Http.4.3.2.nupkg.sha512",
         "System.Net.Http.nuspec",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
@@ -4513,49 +4645,9 @@
         "ref/monotouch10/_._",
         "ref/net45/_._",
         "ref/net46/System.Net.Http.dll",
-        "ref/net46/System.Net.Http.xml",
-        "ref/net46/de/System.Net.Http.xml",
-        "ref/net46/es/System.Net.Http.xml",
-        "ref/net46/fr/System.Net.Http.xml",
-        "ref/net46/it/System.Net.Http.xml",
-        "ref/net46/ja/System.Net.Http.xml",
-        "ref/net46/ko/System.Net.Http.xml",
-        "ref/net46/ru/System.Net.Http.xml",
-        "ref/net46/zh-hans/System.Net.Http.xml",
-        "ref/net46/zh-hant/System.Net.Http.xml",
         "ref/netcore50/System.Net.Http.dll",
-        "ref/netcore50/System.Net.Http.xml",
-        "ref/netcore50/de/System.Net.Http.xml",
-        "ref/netcore50/es/System.Net.Http.xml",
-        "ref/netcore50/fr/System.Net.Http.xml",
-        "ref/netcore50/it/System.Net.Http.xml",
-        "ref/netcore50/ja/System.Net.Http.xml",
-        "ref/netcore50/ko/System.Net.Http.xml",
-        "ref/netcore50/ru/System.Net.Http.xml",
-        "ref/netcore50/zh-hans/System.Net.Http.xml",
-        "ref/netcore50/zh-hant/System.Net.Http.xml",
         "ref/netstandard1.1/System.Net.Http.dll",
-        "ref/netstandard1.1/System.Net.Http.xml",
-        "ref/netstandard1.1/de/System.Net.Http.xml",
-        "ref/netstandard1.1/es/System.Net.Http.xml",
-        "ref/netstandard1.1/fr/System.Net.Http.xml",
-        "ref/netstandard1.1/it/System.Net.Http.xml",
-        "ref/netstandard1.1/ja/System.Net.Http.xml",
-        "ref/netstandard1.1/ko/System.Net.Http.xml",
-        "ref/netstandard1.1/ru/System.Net.Http.xml",
-        "ref/netstandard1.1/zh-hans/System.Net.Http.xml",
-        "ref/netstandard1.1/zh-hant/System.Net.Http.xml",
         "ref/netstandard1.3/System.Net.Http.dll",
-        "ref/netstandard1.3/System.Net.Http.xml",
-        "ref/netstandard1.3/de/System.Net.Http.xml",
-        "ref/netstandard1.3/es/System.Net.Http.xml",
-        "ref/netstandard1.3/fr/System.Net.Http.xml",
-        "ref/netstandard1.3/it/System.Net.Http.xml",
-        "ref/netstandard1.3/ja/System.Net.Http.xml",
-        "ref/netstandard1.3/ko/System.Net.Http.xml",
-        "ref/netstandard1.3/ru/System.Net.Http.xml",
-        "ref/netstandard1.3/zh-hans/System.Net.Http.xml",
-        "ref/netstandard1.3/zh-hant/System.Net.Http.xml",
         "ref/portable-net45+win8+wpa81/_._",
         "ref/win8/_._",
         "ref/wpa81/_._",
@@ -6409,6 +6501,11 @@
   },
   "projectFileDependencyGroups": {
     "": [
+      "Microsoft.AspNet.WebApi >= 5.2.3",
+      "Microsoft.AspNet.WebApi.Client >= 5.2.3",
+      "Microsoft.AspNet.WebApi.Core >= 5.2.3",
+      "Microsoft.AspNet.WebApi.Cors >= 5.2.3",
+      "Microsoft.AspNet.WebApi.WebHost >= 5.2.3",
       "Microsoft.AspNetCore.Mvc >= 1.1.3",
       "Microsoft.AspNetCore.Routing >= 1.1.2",
       "Microsoft.AspNetCore.Server.IISIntegration >= 1.1.2",
@@ -6419,7 +6516,8 @@
       "Microsoft.Extensions.Logging >= 1.1.2",
       "Microsoft.Extensions.Logging.Console >= 1.1.2",
       "Microsoft.Extensions.Logging.Debug >= 1.1.2",
-      "Microsoft.Extensions.Options.ConfigurationExtensions >= 1.1.2"
+      "Microsoft.Extensions.Options.ConfigurationExtensions >= 1.1.2",
+      "System.Net.Http >= 4.3.2"
     ],
     ".NETFramework,Version=v4.6.2": []
   },

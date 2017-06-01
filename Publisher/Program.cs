@@ -10,11 +10,10 @@ namespace Publisher
 {
     class Program
     {
-        public static readonly string assemblyName = System.Reflection.Assembly
+        private static readonly string AssemblyName = System.Reflection.Assembly
             .GetExecutingAssembly().GetName().Name;
 
-        private static readonly HttpClient client = new HttpClient
-        ();
+        private static readonly HttpClient Client = new HttpClient();
 
         static void Main(string[] args)
         {
@@ -24,52 +23,72 @@ namespace Publisher
                 CheckSourceFile(sourcePath);
                 var targetUrl = args[1];
                 var pulishUrl = new Uri(targetUrl);
-                client.BaseAddress = pulishUrl;
+                Client.BaseAddress = pulishUrl;
+                Client.Timeout = TimeSpan.FromMinutes(20);
 
                 ProcessPublish(sourcePath)
                     .Wait();
+
+                Console.WriteLine(FormatMessage("Successfully done"));
             }
             catch (Exception ex)
             {
-                Console.Write("<{0}: Exception {1}>", assemblyName, ex.Message);
+                Console.WriteLine(FormatMessage($"Exception {ex.Message}"));
+                Environment.Exit(1);
             }
         }
 
-        private async static Task ProcessPublish(string sourcePath)
+        private static async Task ProcessPublish(string sourcePath)
         {
-            // https://stackoverflow.com/a/22530157
-            // https://docs.microsoft.com/en-us/aspnet/web-api/overview/advanced/calling-a-web-api-from-a-net-client
-            // https://stackoverflow.com/a/40970671
+            // https://stackoverflow.com/a/42277472/390940
+            // https://stackoverflow.com/a/39416373/390940
 
             HttpResponseMessage response;
             using (var file = new StreamReader(sourcePath))
             {
-                var content = new MultipartContent();
-                content.Add(new StreamContent(file.BaseStream));
-                response = await client.PostAsync("api/deployer?fileName=oppaName", content);
+                //var content = new MultipartContent();
+
+                //var content = new MultipartFormDataContent();
+                //content.Add(new StreamContent(file.BaseStream));
+                //response = await Client.PostAsync("api/deployer?fileName=oppaName", content);
+
+                var content = new StreamContent(file.BaseStream);
+                Console.WriteLine(FormatMessage("Filestream HTTP-transfer started"));
+                response = await Client.PostAsync("api/deployer", content);
             }
 
-
-
+            if (!response.IsSuccessStatusCode)
+            {
+                BreakByError($"Fail web response - {response.StatusCode}");
+                BreakByError("Be aware of strange and unclear HTTP errors when sizing-limits are exceeded");
+            }
         }
 
-        private static string CheckSourceFile(string sourcePath)
+        private static void CheckSourceFile(string sourcePath)
         {
-            string absPath;
-            if (Path.IsPathRooted(sourcePath))
-            {
-                absPath = sourcePath;
-            }
-            else
-            {
-                absPath = Path.Combine(Environment.CurrentDirectory, sourcePath);
-            }
-            if (!File.Exists(absPath))
-            {
-                throw new Exception(string.Format("<{0}: There'is no such a file {1}>", assemblyName, absPath));
-            }
+            var absPath = Path.IsPathRooted(sourcePath) 
+                ? sourcePath
+                : Path.Combine(Environment.CurrentDirectory, sourcePath);
 
-            return sourcePath;
+            if (File.Exists(absPath))
+                return;
+
+            BreakByError($"There'is no such a file {absPath}");
+        }
+
+        private static void BreakByError(string message)
+        {
+            var output = FormatMessage(message);
+            Console.WriteLine(output);
+
+            throw new Exception(output);
+        }
+
+        private static string FormatMessage(string message)
+        {
+            var output = $"<{AssemblyName}>: " + message;
+
+            return output;
         }
     }
 }

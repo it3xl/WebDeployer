@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DeployerSite.Controllers
@@ -19,23 +21,24 @@ namespace DeployerSite.Controllers
 
         // POST api/deployer
         [HttpPost]
-        public async Task<JsonResult> Post(string fileName)
+        [Consumes("multipart/form-data")]
+        public async Task<IActionResult> Post()
         {
-            // https://stackoverflow.com/a/40970671
+            // https://stackoverflow.com/a/42277472/390940
+            // https://stackoverflow.com/a/39416373/390940
 
 
-            try
+
+            var stream = Request.Body;
+
+            using (var fileStream = new FileStream(@"C:\00\oppa_2.7z", FileMode.Create, FileAccess.Write))
             {
-
-
-
-            }
-            catch (Exception ex)
-            {
-
+                stream.CopyTo(fileStream);
             }
 
-            
+            return Ok();
+
+
             return Json("['oppa']");
         }
     }
